@@ -1,4 +1,4 @@
-from common_data import get_markup, FIRST_POINT
+from common_data import get_markup
 from telegram import Update
 from telegram.ext import (
     CallbackContext,
