@@ -6,7 +6,7 @@ from telegram.ext import (
 
 
 def get_table(update: Update, context: CallbackContext) -> int:
-    reply_keyboard = ['Food', 'Water', 'Health', 'Shedding', 'Behavior']
+    reply_keyboard = ['Food', 'Water', 'Health', 'Shedding', 'Behavior', 'Meds']
     update.message.reply_text("Which sheet do you want to download?",
                               reply_markup=get_markup(reply_keyboard))
     return TABLE_ENTRY

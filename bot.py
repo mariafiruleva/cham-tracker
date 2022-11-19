@@ -99,7 +99,14 @@ def collect_info(update: Update, context: CallbackContext) -> int:
         return WRITE_MEDS_INFO
     if context.user_data['type'] == 'food':
         return WRITE_FOOD_INFO
-    return WRITE_INFO
+    if context.user_data['type'] == 'health':
+        return WRITE_HEALTH_INFO
+    if context.user_data['type'] == 'shedding':
+        return WRITE_SHEDDING_INFO
+    if context.user_data['type'] == 'water':
+        return WRITE_WATER_INFO
+    if context.user_data['type'] == 'behavior':
+        return WRITE_BEHAVIOR_INFO
 
 def write_info(update: Update, context: CallbackContext):
     if update.callback_query.data == 'OK':
@@ -146,7 +153,6 @@ def sent_table(update: Update, context: CallbackContext):
     data = sheet.get_all_records()
     date = datetime.date.today().strftime("%d_%m_%Y")
     s = io.StringIO()
-    print(data)
     csv.writer(s).writerows(pd.DataFrame(data).T.reset_index().values.T.tolist())
     s.seek(0)
     buf = io.BytesIO()
